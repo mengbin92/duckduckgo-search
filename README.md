@@ -1,43 +1,69 @@
-# OpenClaw Skills
-
-A collection of useful skills for OpenClaw.
-
-## Skills
-
-### skill-linter
-
-Analyze and validate SKILL.md files for best practices, common issues, and improvement suggestions.
-
-**Usage:**
-```bash
-/skill-linter /path/to/SKILL.md
-```
-
-### duckduckgo-search
+# DuckDuckGo Search Skill
 
 Search the web and fetch URL content using DuckDuckGo (no API key required).
 
-**Prerequisites:**
+## Features
+
+- Web search using DuckDuckGo
+- URL content fetching and extraction
+- JSON output for easy integration
+- No API key required
+
+## Prerequisites
+
 ```bash
 pip3 install duckduckgo-search
 ```
 
-**Usage:**
-```bash
-# Search
-python3 duckduckgo-search/scripts/ddg_search.py "your query" --max-results 10
-
-# Fetch URL
-python3 duckduckgo-search/scripts/ddg_fetch.py "https://example.com"
-```
-
 ## Installation
 
-Install via ClawHub:
+```bash
+clawhub install duckduckgo-search-skill
+```
+
+## Usage
+
+### In OpenClaw
+
+This skill is automatically triggered when you search for information or fetch URLs.
+
+### Command Line
 
 ```bash
-clawhub install skill-linter
-clawhub install duckduckgo-search
+# Search
+python3 scripts/ddg_search.py "your search query" --max-results 10
+
+# Fetch URL
+python3 scripts/ddg_fetch.py "https://example.com" --timeout 30
+```
+
+## Output Format
+
+### Search Results (JSON)
+```json
+{
+  "query": "search query",
+  "count": 10,
+  "results": [
+    {
+      "title": "Result title",
+      "url": "https://example.com",
+      "snippet": "Description snippet"
+    }
+  ]
+}
+```
+
+### Fetch Results (JSON)
+```json
+{
+  "url": "https://example.com",
+  "title": "Page Title",
+  "text": "Extracted readable content...",
+  "description": "Meta description",
+  "status_code": 200,
+  "error": null
+}
 ```
 
 ## License
